@@ -307,14 +307,28 @@ Attack surface is minimal and limited to client-side rendering of static MDX con
 
 Repository is forked from `vudovn/antigravity-kit`, a public MIT-licensed project. No suspicious modifications found in the fork.
 
-### Finding S-2 — No CI/CD pipelines (INFORMATIONAL)
+### Finding S-2 — No CI/CD pipelines (INFORMATIONAL → FIXED)
 
-No `.github/workflows/` directory exists. While this means no CI/CD pipeline vulnerabilities, it also means no automated security scanning is in place.
+| Field | Value |
+|-------|-------|
+| **Severity** | Informational |
+| **Status** | ✅ Fixed |
 
-**Recommendation:** Consider adding GitHub Actions for:
-- `npm audit` on pull requests
-- Dependency version checking (Dependabot)
-- CodeQL analysis
+**Description:**
+No `.github/workflows/` directory existed, meaning no automated security scanning was in place.
+
+**Remediation applied:**
+Added the following GitHub Actions workflows and configuration:
+
+| File | Purpose |
+|------|---------|
+| `.github/workflows/dependency-review.yml` | Blocks PRs with vulnerable or restrictively-licensed deps; runs `npm audit` |
+| `.github/workflows/codeql.yml` | CodeQL static analysis for JS/TS on push/PR + weekly |
+| `.github/workflows/security-scan.yml` | Runs the repo's own `security_scan.py` for secrets and dangerous patterns |
+| `.github/workflows/lint.yml` | ESLint + TypeScript type check + Next.js build on `web/` changes |
+| `.github/dependabot.yml` | Automated weekly dependency update PRs for npm and GitHub Actions |
+
+See [`docs/security/GITHUB_ACTIONS_GUIDE.md`](../docs/security/GITHUB_ACTIONS_GUIDE.md) for full details on each workflow.
 
 ---
 
@@ -327,6 +341,7 @@ No `.github/workflows/` directory exists. While this means no CI/CD pipeline vul
 | C-1 | Missing security headers | Medium | `web/next.config.ts` | ✅ Fixed |
 | C-2 | Missing `.env*` in root gitignore | Medium | `.gitignore` | ✅ Fixed |
 | C-3 | API key placeholder in MCP config | High | `.agent/mcp_config.json` | ✅ Fixed |
+| S-2 | No CI/CD pipelines | Informational | `.github/workflows/`, `.github/dependabot.yml` | ✅ Fixed |
 
 ---
 
