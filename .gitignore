@@ -25,4 +25,4 @@ others
 *_prs.json
 remaining_prs.json
 checks.txt
-pr2_comments.json
+pr*_*.json

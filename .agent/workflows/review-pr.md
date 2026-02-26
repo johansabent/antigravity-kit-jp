@@ -67,7 +67,7 @@ After pushing fixes, resolve each thread that was addressed via the GitHub Graph
    ```
 2. **For each unresolved thread**, call the `resolveReviewThread` mutation:
    ```bash
-   gh api graphql -f query='mutation { resolveReviewThread(input: { threadId: "THREAD_ID" }) { thread { isResolved } } }'
+   gh api graphql -f query='mutation($id: ID!) { resolveReviewThread(input: { threadId: $id }) { thread { isResolved } } }' -f id="THREAD_ID"
    ```
 3. **Only resolve threads where the underlying issue was actually fixed** — do not blindly resolve everything.
 
@@ -93,7 +93,7 @@ All threads have been marked as resolved. Could you please re-review to confirm 
 ```
 
 3. **Only @mention bots listed in the config** — never guess.
-4. **Post the comment** using `gh pr comment {N} --repo {OWNER}/{REPO} --body "...the message above..."`.
+4. **Post the comment** using the GitHub MCP tool `add_issue_comment` or `create_pull_request_review` to ensure the body is handled safely as data rather than as part of a shell command.
 
 > [!IMPORTANT]
 > If `.agent/config/bot_preferences.json` does not exist, **stop and ask the user**:

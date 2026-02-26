@@ -29,7 +29,7 @@ After install, paste this prompt into your AI editor (Gemini, Cursor, Windsurf, 
 Read .agent/rules/GEMINI.md and all referenced files.
 Then create every editor config file needed for this editor
 (e.g. .cursorrules, .windsurfrules, .clinerules) so all
-workflows and agents are active from your next response. Also ask me which languages showd you talk to me, comment, and post on github, so you can update the workflows and files
+workflows and agents are active from your next response. Also ask me which languages should you talk to me, comment, and post on github, so you can update the workflows and files
 ```
 
 The agent will read the framework, create the appropriate hook files, and confirm which agents and workflows are loaded.
