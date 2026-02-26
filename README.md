@@ -35,13 +35,17 @@ ag-kit init
 
 This installs the `.agent` folder containing all templates into your project.
 
-### ⚠️ Important Note on `.gitignore`
-If you are using AI-powered editors like **Cursor** or **Windsurf**, adding the `.agent/` folder to your `.gitignore` may prevent the IDE from indexing the workflows. This results in slash commands (like `/plan`, `/debug`) not appearing in the chat suggestion dropdown.
+### ⚠️ Important Note on `.gitignore` and AI Editors
+All major AI-powered editors (**Cursor**, **Windsurf**, **VS Code + Gemini/Copilot**, **JetBrains AI**) respect `.gitignore` when indexing your repository for AI context.
+
+If you add the `.agent/` folder to your `.gitignore`, the AI IDE will **not** be able to index the included workflows, agents, and skills. This will result in slash commands (like `/plan`, `/debug`) failing to appear or function correctly.
 
 **Recommended Solution:**
-To keep the `.agent/` folder local (not tracked by Git) while maintaining AI functionality:
-1. Ensure `.agent/` is **NOT** in your project's `.gitignore`.
-2. Instead, add it to your local exclude file: `.git/info/exclude`
+To maintain AI functionality across all editors, you must keep `.agent/` **tracked in Git**:
+1. Ensure `.agent/` is **NOT** in your project's root `.gitignore` or any subfolder `.gitignore`.
+2. Keep your secrets (like API keys) exclusively in `.env`, which is already ignored.
+
+*(Note: Older versions of this document recommended using `.git/info/exclude`. This is **incorrect**, as AI editors do not read Git's exclude files for indexing. If you truly need to keep local-only customizations to tracked agent files without committing them, use `git update-index --skip-worktree .agent/` instead.)*
 
 ## What's Included
 
