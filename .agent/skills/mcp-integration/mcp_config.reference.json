@@ -43,13 +43,6 @@
         "--api-key",
         "${CONTEXT7_API_KEY}"
       ]
-    },
-    "shadcn": {
-      "command": "npx",
-      "args": [
-        "shadcn@latest",
-        "mcp"
-      ]
     }
   }
 }
@@ -59,9 +52,12 @@
 //
 // 1. github-mcp-server: Handles ALL remote/social interactions
 //    (Issues, Pull Requests, remote file search, user search).
+//    We disable `create_or_update_file` and `push_files` so the AI
+//    only edits files locally and tests before using git_push.
 //
 // 2. GitKraken: Handles all local IDE Git state (status, blame,
-//    log, worktree) and AI hand-off via GitLens.
+//    log, worktree) and AI hand-off via GitLens (commit_composer,
+//    launchpad, start_work).
 //    We STRICTLY disable all issue/PR duplicate tools here to
 //    force the AI to route through the GitHub MCP server for those.
 //
@@ -70,7 +66,5 @@
 // PATH NOTES:
 // - Set GK_BINARY to your path.
 //   Windows standard: "c:\\Users\\<your_user>\\AppData\\Roaming\\...\\gk.exe"
-//
-// IMPORTANT: Never commit real API tokens into this file.
-// setup live mcp server in  ~/.gemini/antigravity/mcp_config.json
+// - Never commit real API tokens into this file.
 // -------------------------------------------------------------

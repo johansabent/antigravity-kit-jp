@@ -9,8 +9,8 @@
 Antigravity Kit is a modular system consisting of:
 
 - **20 Specialist Agents** - Role-based AI personas
-- **36 Skills** - Domain-specific knowledge modules
-- **11 Workflows** - Slash command procedures
+- **37 Skills** - Domain-specific knowledge modules
+- **12 Workflows** - Slash command procedures
 
 ---
 
@@ -57,7 +57,7 @@ Specialist AI personas for different domains.
 
 ---
 
-## 🧩 Skills (36)
+## 🧩 Skills (37)
 
 Modular knowledge domains that agents can load on-demand. based on task context.
 
@@ -160,7 +160,8 @@ Modular knowledge domains that agents can load on-demand. based on task context.
 | `clean-code`              | Coding standards (Global) |
 | `behavioral-modes`        | Agent personas            |
 | `parallel-agents`         | Multi-agent patterns      |
-| `mcp-builder`             | Model Context Protocol    |
+| `mcp-builder`             | Server building principles|
+| `mcp-integration`         | MCP setup & deduplication |
 | `documentation-templates` | Doc formats               |
 | `i18n-localization`       | Internationalization      |
 | `performance-profiling`   | Web Vitals, optimization  |
@@ -168,7 +169,7 @@ Modular knowledge domains that agents can load on-demand. based on task context.
 
 ---
 
-## 🔄 Workflows (11)
+## 🔄 Workflows (12)
 
 Slash command procedures. Invoke with `/command`.
 
@@ -179,6 +180,7 @@ Slash command procedures. Invoke with `/command`.
 | `/debug`         | Debug issues             |
 | `/deploy`        | Deploy application       |
 | `/enhance`       | Improve existing code    |
+| `/git`           | Git/GitHub MCP workflow  |
 | `/orchestrate`   | Multi-agent coordination |
 | `/plan`          | Task breakdown           |
 | `/preview`       | Preview changes          |
@@ -262,13 +264,27 @@ For details, see [scripts/README.md](scripts/README.md)
 
 ---
 
+## 🔌 MCP Integration (Model Context Protocol)
+
+The project leverages external capabilities via Model Context Protocol servers. To prevent duplicate tool hallucinations, we strictly enforce server routing:
+
+| Server | Role | Deduplication Rules |
+|--------|------|---------------------|
+| `github-mcp-server` | Remote API operations | Owns all PRs, Issues, and GitHub searching. |
+| `GitKraken` | Local Git & GitLens | Owns `git status`, local branching, and AI GitLens worktrees. Issue/PR duplicated tools are strictly **disabled**. |
+| `context7` | Knowledge retrieval | API docs and reference code retrieval. |
+
+For detailed local setup and cross-platform configuration templates, see the `mcp-integration` skill (`.agent/skills/mcp-integration/SKILL.md`).
+
+---
+
 ## 📊 Statistics
 
 | Metric              | Value                         |
 | ------------------- | ----------------------------- |
 | **Total Agents**    | 20                            |
-| **Total Skills**    | 36                            |
-| **Total Workflows** | 11                            |
+| **Total Skills**    | 37                            |
+| **Total Workflows** | 12                            |
 | **Total Scripts**   | 2 (master) + 18 (skill-level) |
 | **Coverage**        | ~90% web/mobile development   |
 
