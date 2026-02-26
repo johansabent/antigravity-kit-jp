@@ -47,10 +47,24 @@ Use these for rich AI interactions via GitLens inside VS Code / environments sup
 Use these commands for social/remote platform integration. DO NOT use GitKraken's issue or PR tools for these.
 
 ```
-/git pr         → create_pull_request (GitHub MCP)
+/git pr         → Pre-validate + create_pull_request (see below)
 /git issues     → list_issues (GitHub MCP)
 /git fork       → fork_repository (GitHub MCP)
 ```
+
+### `/git pr` — Pre-Validated Pull Request
+
+When `/git pr` is invoked, run this sequence **before** opening the PR:
+
+1. **Collect changed files**: `git_log_or_diff` (GitKraken, action="diff").
+2. **Run lint**: Execute the project's lint command (e.g., `npm run lint`).
+3. **Run tests**: Execute the project's test command (e.g., `npm test`).
+4. **Gate check**:
+   - If lint or tests fail → **STOP**. Show errors and ask user to fix.
+   - If all pass → proceed.
+5. **Push**: `git_push` (GitKraken).
+6. **Create PR**: `create_pull_request` (GitHub MCP) with a generated description.
+7. **Re-trigger bots**: Read `.agent/config/bot_preferences.json` and post a comment mentioning each configured bot.
 
 ---
 

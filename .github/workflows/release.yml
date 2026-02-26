@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 permissions:
   contents: write
@@ -29,7 +29,7 @@ jobs:
           # Extract the changelog block for this version between its heading and the next
           awk "/^## \[$VERSION\]/{found=1; next} found && /^## /{exit} found{print}" CHANGELOG.md > /tmp/release_notes.md
           # Trim leading/trailing blank lines
-          sed -i '/./,$!d' /tmp/release_notes.md
+          sed -i '/./,$!d; :a; /^\s*$/{ $d; N; ba }' /tmp/release_notes.md
           echo "NOTES_FILE=/tmp/release_notes.md" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release

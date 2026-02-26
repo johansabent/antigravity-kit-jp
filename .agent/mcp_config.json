@@ -53,24 +53,3 @@
     }
   }
 }
-
-// -------------------------------------------------------------
-// MCP SERVER ROLES & DEDUPLICATION:
-//
-// 1. github-mcp-server: Handles ALL remote/social interactions
-//    (Issues, Pull Requests, remote file search, user search).
-//
-// 2. GitKraken: Handles all local IDE Git state (status, blame,
-//    log, worktree) and AI hand-off via GitLens.
-//    We STRICTLY disable all issue/PR duplicate tools here to
-//    force the AI to route through the GitHub MCP server for those.
-//
-// 3. context7: Global documentation indexing and querying.
-//
-// PATH NOTES:
-// - Set GK_BINARY to your path.
-//   Windows standard: "c:\\Users\\<your_user>\\AppData\\Roaming\\...\\gk.exe"
-//
-// IMPORTANT: Never commit real API tokens into this file.
-// setup live mcp server in  ~/.gemini/antigravity/mcp_config.json
-// -------------------------------------------------------------
