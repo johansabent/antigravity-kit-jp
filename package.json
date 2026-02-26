@@ -1,14 +1,14 @@
 {
-  "name": "antigravity-kit",
-  "version": "2.0.0",
-  "description": "AI Agent templates - Skills, Agents, and Workflows for enhanced coding assistance",
+  "name": "antigravity-kit-jp",
+  "version": "1.0.0",
+  "description": "AI Agent templates - Skills, Agents, and Workflows for enhanced coding assistance (johansabent fork)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vudovn/antigravity-kit.git"
+    "url": "git+https://github.com/johansabent/antigravity-kit-jp.git"
   },
-  "homepage": "https://github.com/vudovn/antigravity-kit#readme",
+  "homepage": "https://github.com/johansabent/antigravity-kit-jp#readme",
   "bugs": {
-    "url": "https://github.com/vudovn/antigravity-kit/issues"
+    "url": "https://github.com/johansabent/antigravity-kit-jp/issues"
   },
   "keywords": [
     "antigravity",
@@ -16,8 +16,9 @@
     "agent",
     "gemini",
     "skills",
-    "templates"
+    "templates",
+    "security"
   ],
-  "author": "vudovn",
+  "author": "johansabent",
   "license": "MIT"
 }
