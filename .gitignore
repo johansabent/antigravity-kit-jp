@@ -17,3 +17,7 @@ others
 .env.local
 .env.development
 .env.production
+
+# Temporary automation/query output files
+pr2_threads.json
+*_threads.json
