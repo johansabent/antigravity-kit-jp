@@ -19,5 +19,10 @@ others
 .env.production
 
 # Temporary automation/query output files
-pr2_threads.json
 *_threads.json
+*_latest.json
+*_prs.txt
+*_prs.json
+remaining_prs.json
+checks.txt
+pr2_comments.json
