@@ -1,0 +1,8 @@
+{
+  "chat.agentFilesLocations": [
+    ".agent/agents"
+  ],
+  "chat.agentSkillsLocations": [
+    ".agent/skills"
+  ]
+}

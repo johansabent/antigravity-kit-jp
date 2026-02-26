@@ -5,9 +5,24 @@ antigravity-doc
 tests
 others
 
+# Agent local config (user-specific, .example is tracked)
+.agent/config/bot_preferences.json
+
+# VS Code workspace settings (user-specific, .example is tracked)
+.vscode/settings.json
+
 # Environment variables - prevent sensitive data exposure (CWE-200)
 .env
 .env.*
 .env.local
 .env.development
 .env.production
+
+# Temporary automation/query output files
+*_threads.json
+*_latest.json
+*_prs.txt
+*_prs.json
+remaining_prs.json
+checks.txt
+pr*_*.json

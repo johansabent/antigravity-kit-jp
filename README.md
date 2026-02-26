@@ -1,12 +1,22 @@
-# Antigravity Kit
+# Antigravity Kit JP
 
-> AI Agent templates with Skills, Agents, and Workflows
+> AI Agent templates with Skills, Agents, and Workflows — **johansabent's fork** of [vudovn/antigravity-kit](https://github.com/vudovn/antigravity-kit)
 
-<div  align="center">
-    <a href="https://unikorn.vn/p/antigravity-kit?ref=unikorn" target="_blank"><img src="https://unikorn.vn/api/widgets/badge/antigravity-kit?theme=dark" alt="Antigravity Kit - Nổi bật trên Unikorn.vn" style="width: 210px; height: 54px;" width="210" height="54" /></a>
-    <a href="https://unikorn.vn/p/antigravity-kit?ref=unikorn" target="_blank"><img src="https://unikorn.vn/api/widgets/badge/antigravity-kit/rank?theme=dark&type=daily" alt="Antigravity Kit - Hàng ngày" style="width: 250px; height: 64px;" width="250" height="64" /></a>
-    <a href="https://launch.j2team.dev/products/antigravity-kit" target="_blank"><img src="https://launch.j2team.dev/badge/antigravity-kit/dark" alt="Antigravity Kit on J2TEAM Launch" width="250" height="54" /></a>
-</div>
+[![Release](https://img.shields.io/github/v/release/johansabent/antigravity-kit-jp?style=flat-square&label=release)](https://github.com/johansabent/antigravity-kit-jp/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![CodeQL](https://img.shields.io/badge/CodeQL-passing-brightgreen?style=flat-square)](https://github.com/johansabent/antigravity-kit-jp/actions/workflows/codeql.yml)
+[![Security Hardened](https://img.shields.io/badge/Security-Hardened-blue?style=flat-square)](docs/security/AUDIT_REPORT.md)
+
+## What's Different in This Fork
+
+This fork adds a **professional security layer** on top of the upstream project:
+
+- 🔒 **Security fixes** for CWE-78 (command injection), CWE-693 (missing HTTP security headers), CWE-200 (secrets in repo), CWE-798 (hardcoded credentials)
+- 🤖 **GitHub Actions CI/CD** — CodeQL, dependency review, secret scanning, lint, and automated releases
+- 📋 **Dependabot** — weekly automated dependency updates
+- 📄 **Security policy & audit docs** — full vulnerability disclosure process and remediation log
+
+See [CHANGELOG.md](CHANGELOG.md) for the full release notes.
 
 ## Quick Install
 
@@ -21,15 +31,21 @@ npm install -g @vudovn/ag-kit
 ag-kit init
 ```
 
+> **Note:** The CLI tool is provided by the upstream project. This fork focuses on security hardening and CI/CD additions rather than publishing its own npm package.
+
 This installs the `.agent` folder containing all templates into your project.
 
-### ⚠️ Important Note on `.gitignore`
-If you are using AI-powered editors like **Cursor** or **Windsurf**, adding the `.agent/` folder to your `.gitignore` may prevent the IDE from indexing the workflows. This results in slash commands (like `/plan`, `/debug`) not appearing in the chat suggestion dropdown.
+### ⚠️ Important Note on `.gitignore` and AI Editors
+All major AI-powered editors (**Cursor**, **Windsurf**, **VS Code + Gemini/Copilot**, **JetBrains AI**) respect `.gitignore` when indexing your repository for AI context.
+
+If you add the `.agent/` folder to your `.gitignore`, the AI IDE will **not** be able to index the included workflows, agents, and skills. This will result in slash commands (like `/plan`, `/debug`) failing to appear or function correctly.
 
 **Recommended Solution:**
-To keep the `.agent/` folder local (not tracked by Git) while maintaining AI functionality:
-1. Ensure `.agent/` is **NOT** in your project's `.gitignore`.
-2. Instead, add it to your local exclude file: `.git/info/exclude`
+To maintain AI functionality across all editors, you must keep `.agent/` **tracked in Git**:
+1. Ensure `.agent/` is **NOT** in your project's root `.gitignore` or any subfolder `.gitignore`.
+2. Keep your secrets (like API keys) exclusively in `.env`, which is already ignored.
+
+*(Note: Older versions of this document recommended using `.git/info/exclude`. This is **incorrect**, as AI editors do not read Git's exclude files for indexing. If you truly need to keep local-only customizations to tracked agent files without committing them, use `git update-index --skip-worktree .agent/` instead.)*
 
 ## What's Included
 
@@ -126,20 +142,8 @@ ag-kit init --dry-run      # Preview actions without executing
 - **[Web App Example](https://antigravity-kit-v2.vercel.app/docs/guide/examples/brainstorm)** - Step-by-step guide to creating a web application
 - **[Online Docs](https://antigravity-kit-v2.vercel.app/docs)** - Browse all documentation online
 
-## Buy me coffee
-
-<p align="center">
-  <a href="https://buymeacoffee.com/vudovn">
-    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee" />
-  </a>
-</p>
-
-<p align="center"> - or - </p>
-
-<p align="center">
-  <img src="https://img.vietqr.io/image/mbbank-0779440918-compact.jpg" alt="Buy me coffee" width="200" />
-</p>
-
 ## License
 
-MIT © Vudovn
+MIT © [johansabent](https://github.com/johansabent)
+
+> Upstream work © Vudovn — [original repository](https://github.com/vudovn/antigravity-kit)

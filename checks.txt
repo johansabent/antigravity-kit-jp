@@ -1,5 +1,0 @@
-ESLint & TypeScript	fail	26s	https://github.com/johansabent/antigravity-kit-jp/actions/runs/22407717509/job/65015467290	
-Analyze JavaScript / TypeScript	pass	1m13s	https://github.com/johansabent/antigravity-kit-jp/actions/runs/22407717514/job/65015467073	
-CodeQL	pass	2s	https://github.com/johansabent/antigravity-kit-jp/runs/65015623975	
-Next.js Build	pass	38s	https://github.com/johansabent/antigravity-kit-jp/actions/runs/22407717509/job/65015467188	
-Secret & Pattern Scan	pass	6s	https://github.com/johansabent/antigravity-kit-jp/actions/runs/22407718997/job/65015467284	

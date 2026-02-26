@@ -1,0 +1,11 @@
+{
+    "bots": [
+        "gemini-code-assist",
+        "copilot"
+    ],
+    "defaultReviewTrigger": "@gemini-code-assist /review",
+    "botCommands": {
+        "gemini-code-assist": "@gemini-code-assist /review",
+        "copilot": "@copilot review"
+    }
+}
