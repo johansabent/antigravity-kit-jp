@@ -6,7 +6,7 @@
                 "-y",
                 "@upstash/context7-mcp",
                 "--api-key",
-                "YOUR_API_KEY"
+                "${CONTEXT7_API_KEY}"
             ]
         },
         "shadcn": {
@@ -16,9 +16,9 @@
                 "mcp"
             ]
         }
-        //other mcp servers
     }
 }
 
-// setup mcp server in  ~/.gemini\antigravity\mcp_config.json
+// setup mcp server in  ~/.gemini/antigravity/mcp_config.json
+// IMPORTANT: Set CONTEXT7_API_KEY as an environment variable. Never hardcode API keys.
 

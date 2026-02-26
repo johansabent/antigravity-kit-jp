@@ -1,0 +1,31 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  secret-scan:
+    name: Secret & Pattern Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run secret scanner
+        run: |
+          python .agent/skills/vulnerability-scanner/scripts/security_scan.py . --scan-type secrets --output summary
+
+      - name: Run code pattern scanner
+        run: |
+          python .agent/skills/vulnerability-scanner/scripts/security_scan.py . --scan-type patterns --output summary
