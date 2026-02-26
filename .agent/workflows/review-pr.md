@@ -57,18 +57,51 @@ When the user says "resolve", "fix", or "address":
 
 ---
 
-## Phase 3: Re-trigger Bot Reviews
+## Phase 3: Resolve GitHub Review Threads
 
-After pushing fixes, automatically re-trigger configured bots:
+After pushing fixes, resolve each thread that was addressed via the GitHub GraphQL API:
+
+1. **Fetch all open threads** via GraphQL:
+   ```graphql
+   { repository(owner: "OWNER", name: "REPO") { pullRequest(number: N) { reviewThreads(first: 20) { nodes { id isResolved } } } } }
+   ```
+2. **For each unresolved thread**, call the `resolveReviewThread` mutation:
+   ```bash
+   gh api graphql -f query='mutation { resolveReviewThread(input: { threadId: "THREAD_ID" }) { thread { isResolved } } }'
+   ```
+3. **Only resolve threads where the underlying issue was actually fixed** — do not blindly resolve everything.
+
+---
+
+## Phase 4: Re-trigger Bot Reviews
+
+After pushing fixes and resolving threads, post a rich context comment to re-trigger bots:
 
 1. **Read bot config** from `.agent/config/bot_preferences.json`.
-2. **Post trigger comment** on the PR using `add_issue_comment`.
-3. **Only mention bots listed in the config** — never guess.
+2. **Compose a context-rich comment** using this template (fill in the blanks):
+
+```markdown
+👋 Hi! I'm Antigravity (AI pilot acting on behalf of @{PR_AUTHOR}).
+
+I've addressed all review comments on this PR and pushed the following fixes:
+
+{BULLET_LIST_OF_CHANGES}
+
+All threads have been marked as resolved. Could you please re-review to confirm the issues are properly addressed?
+
+{BOT_MENTIONS_FROM_CONFIG}
+```
+
+3. **Only @mention bots listed in the config** — never guess.
+4. **Post the comment** using `gh pr comment {N} --repo {OWNER}/{REPO} --body "...the message above..."`.
 
 > [!IMPORTANT]
 > If `.agent/config/bot_preferences.json` does not exist, **stop and ask the user**:
 > "Which AI review bots do you have installed on this repo? (e.g., gemini-code-assist, copilot)"
 > Then create the config file before proceeding.
+
+> [!WARNING]
+> Never store documentation notes as `_comment` or `//` keys inside `.json` files — these are invalid JSON. Use adjacent `.md` files for docs.
 
 ---
 
@@ -93,7 +126,7 @@ After pushing fixes, automatically re-trigger configured bots:
 - [ ] <question> — by @reviewer
 
 ### 🤖 Bot Re-trigger
-- Mentioned: @gemini-code-assist /review
+- Comment posted: contextualized message with fix summary and bot @mentions from config
 ```
 
 ---

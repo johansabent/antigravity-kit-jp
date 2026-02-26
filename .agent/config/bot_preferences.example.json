@@ -1,6 +1,4 @@
 {
-    "_comment": "Copy this file to bot_preferences.json and configure your installed bots.",
-    "_instructions": "List the GitHub bot usernames you have installed. The /review workflow will @mention only these bots.",
     "bots": [
         "gemini-code-assist",
         "copilot"
