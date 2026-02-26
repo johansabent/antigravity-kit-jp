@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-02-26
+
+### Added
+
+- **npm CLI package** (`@jpsabent/ag-kit`) — `npx @jpsabent/ag-kit` installs the `.agent/` folder directly from this fork's `main` branch into any project
+- `bin/init.js` — zero-dependency CLI: downloads `.agent/`, backs up any existing copy, and prints the first-session prompt
+- `QUICKSTART.md` rewritten — one-liner install flow + copy-paste first-session AI prompt
+
+### Fixed
+
+- npm package scope corrected from `@johansabent` to `@jpsabent` to match npm account
+- Removed invalid `./` prefix from `bin` script path in `package.json`
+
 ## [1.0.0] - 2026-02-26
 
 ### Fork Release — johansabent/antigravity-kit-jp
@@ -107,5 +120,6 @@ layer on top.
 - CLI tool for easy installation and updates
 - Comprehensive documentation and architecture guide
 
-[Unreleased]: https://github.com/johansabent/antigravity-kit-jp/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/johansabent/antigravity-kit-jp/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/johansabent/antigravity-kit-jp/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/johansabent/antigravity-kit-jp/releases/tag/v1.0.0
