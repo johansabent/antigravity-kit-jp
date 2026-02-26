@@ -6,9 +6,7 @@
 import https from 'node:https';
 import fs from 'node:fs';
 import path from 'node:path';
-import zlib from 'node:zlib';
 import { spawnSync } from 'node:child_process';
-import { createRequire } from 'node:module';
 
 const REPO_TARBALL = 'https://codeload.github.com/johansabent/antigravity-kit-jp/tar.gz/refs/heads/main';
 const AGENT_DIR_NAME = '.agent';
