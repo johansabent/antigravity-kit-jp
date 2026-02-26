@@ -1,6 +1,6 @@
 {
   "name": "@jpsabent/ag-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AI Agent templates — Skills, Agents, and Workflows for enhanced coding assistance (security-hardened fork)",
   "type": "module",
   "bin": {
