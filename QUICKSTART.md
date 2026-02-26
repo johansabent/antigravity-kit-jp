@@ -5,13 +5,13 @@
 ## Install
 
 ```bash
-npx @johansabent/ag-kit
+npx @jpsabent/ag-kit
 ```
 
 Or install globally and reuse across projects:
 
 ```bash
-npm install -g @johansabent/ag-kit
+npm install -g @jpsabent/ag-kit
 ag-kit
 ```
 
