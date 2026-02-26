@@ -1,10 +1,10 @@
 {
-  "name": "@johansabent/ag-kit",
+  "name": "@jpsabent/ag-kit",
   "version": "1.0.0",
   "description": "AI Agent templates — Skills, Agents, and Workflows for enhanced coding assistance (security-hardened fork)",
   "type": "module",
   "bin": {
-    "ag-kit": "./bin/init.js"
+    "ag-kit": "bin/init.js"
   },
   "files": [
     "bin/"

@@ -21,13 +21,13 @@ See [CHANGELOG.md](CHANGELOG.md) for the full release notes.
 ## Quick Install
 
 ```bash
-npx @vudovn/ag-kit init
+npx @jpsabent/ag-kit init
 ```
 
 Or install globally:
 
 ```bash
-npm install -g @vudovn/ag-kit
+npm install -g @jpsabent/ag-kit
 ag-kit init
 ```
 
